@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:App1.Effects"
+             xmlns:behaviors ="clr-namespace:App1.Behavior"
+             xmlns:Converters="clr-namespace:App1.Converter"
+             x:Class="App1.Details"
+             
+             >
+    <ContentPage.Resources>
+        <Converters:CurrencyConverter x:Key="CurrencyConverter"/>
+        <Converters:CurrencyConverterSingle x:Key="CurrencyConverterSingle" />
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="2" CornerRadius="0">
+                <Label x:Name="Header"   HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
+            </Frame>
+            <Grid Margin="10">
+                <Frame Padding="5"
+            BorderColor="#5a79ba"
+            HasShadow="False">
+                    <Entry
+                        IsReadOnly="True"
+                        x:Name="To">
+                        <Entry.Effects>
+                            <effects:RemoveEntryUnderline/>
+                        </Entry.Effects>
+                    </Entry>
+                </Frame>
+                <Label Text="To "
+            FontSize="15"
+            TextColor="#570dff"
+            BackgroundColor="white"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,-10,0,0"/>
+            </Grid>
+            <Grid Margin="10">
+                <Frame Padding="10"
+            BorderColor="#5a79ba"
+            HasShadow="False">
+                    <Entry
+                        IsReadOnly="True"
+                        x:Name="Address"
+                        FontSize="Small">
+                        <Entry.Effects>
+                            <effects:RemoveEntryUnderline/>
+                        </Entry.Effects>
+                    </Entry>
+                </Frame>
+                <Label Text="Address "
+            FontSize="15"
+            TextColor="#570dff"
+            BackgroundColor="white"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,-10,0,0"/>
+            </Grid>
+            <Grid Margin="10">
+                <Frame Padding="10"
+            BorderColor="#5a79ba"
+            HasShadow="False">
+                    <Entry
+                        IsReadOnly="True"
+                        x:Name="Currency">
+                        <Entry.Effects>
+                            <effects:RemoveEntryUnderline/>
+                        </Entry.Effects>
+                    </Entry>
+                </Frame>
+                <Label Text="Currency "
+            FontSize="15"
+            TextColor="#570dff"
+            BackgroundColor="white"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,-10,0,0"/>
+            </Grid>
+            <Grid Margin="10">
+                <Frame Padding="10"
+            BorderColor="#5a79ba"
+            HasShadow="False">
+                    <!--<Entry
+                        IsReadOnly="True"
+                        x:Name="Amount"
+                        Text="{Binding  Source={x:Reference W}, Path=Text,Converter= {StaticResource CurrencyConverterSingle}}">
+                        <Entry.Effects>
+                            <effects:RemoveEntryUnderline/>
+                        </Entry.Effects>
+
+                    </Entry>-->
+                    <Label Text="{Binding  Source={x:Reference W}, Path=Text,Converter= {StaticResource CurrencyConverterSingle}}"
+                           FontSize="Large" TextColor="Black"/>
+                </Frame>
+                <Label Text="Amount "
+            FontSize="15"
+            TextColor="#570dff"
+            BackgroundColor="white"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,-10,0,0"/>
+            </Grid>
+            <Grid Margin="10">
+                <Frame Padding="10"
+            BorderColor="#5a79ba"
+            HasShadow="False">
+
+                    <Label Text="{Binding  Source={x:Reference TransactionFee}, Path=Text,Converter= {StaticResource CurrencyConverterSingle}}"
+                           FontSize="Large" TextColor="Black"/>
+                </Frame>
+                <Label Text="Transaction Fee "
+            FontSize="15"
+            TextColor="#570dff"
+            BackgroundColor="white"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,-10,0,0"/>
+            </Grid>
+            <Grid Margin="10">
+                <Frame Padding="10"
+            BorderColor="#5a79ba"
+            HasShadow="False">
+                    <Entry
+                        IsReadOnly="True"
+                        x:Name="Status">
+                        <Entry.Effects>
+                            <effects:RemoveEntryUnderline/>
+                        </Entry.Effects>
+                        <Entry.Behaviors>
+                            <behaviors:StatusBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
+                </Frame>
+                <Label Text="Status "
+            FontSize="15"
+            TextColor="#570dff"
+            BackgroundColor="white"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="20,-10,0,0"/>
+                <Label IsVisible="False"
+                       x:Name="W">
+
+                </Label>
+                <Entry
+                        IsReadOnly="True"
+                        x:Name="TransactionFee"
+                        IsVisible="False">
+                    <Entry.Effects>
+                        <effects:RemoveEntryUnderline/>
+                    </Entry.Effects>
+                </Entry>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

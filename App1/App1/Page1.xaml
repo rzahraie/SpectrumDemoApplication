@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:local="clr-namespace:App1"
+             x:Class="App1.Page1">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CustomGridStyle x:Key="customgridstyle" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="16" CornerRadius="0">
+                <Label x:Name = "Header" Text ="Crypto Currency Transactions" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <Label Text="Tap on each row to see details" FontSize="Small" Padding="30,10,30,10"/>
+            <SearchBar Placeholder="Search transactions..."
+                   x:Name="SearchBar"
+                   CancelButtonColor="Blue"
+                   PlaceholderColor="Blue"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Start" 
+                   FontSize="Small"
+                   FontAttributes="Italic" 
+                   TextChanged="SearchBar_TextChanged"/>
+            <Syncfusion:SfDataGrid x:Name="dataGrid"
+                           ColumnSizer="Star"
+                           GridStyle="{StaticResource customgridstyle}"
+                           AllowResizingColumn="True"
+                           SelectionMode="Single"
+                           GridTapped="dataGrid_GridTapped"
+                           AllowSorting="True">
+            </Syncfusion:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
